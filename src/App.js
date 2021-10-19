@@ -11,19 +11,21 @@ import Home from './components/Home/Home'
 import './App.scss'
 
 function App() {
-	return <div className='app'>
-		<Router>
-			<Header />
-			<div className="container">
-				<Switch>
-					<Route path='/' exact component={Home} />
-					<Route path='/movie/:imbdID' component={MovieDetail} />
-					<Route component={PageNotFound} />
-				</Switch>
-			</div>
-			<Footer />
-		</Router>
-	</div>
+	return (
+		<div className='app'>
+			<Router>
+				<Header />
+				<div className='container'>
+					<Switch>
+						<Route path='/' exact component={Home} />
+						<Route path='/movie/:imdbID' component={MovieDetail} />
+						<Route component={PageNotFound} />
+					</Switch>
+				</div>
+				<Footer />
+			</Router>
+		</div>
+	)
 }
 
 export default App
