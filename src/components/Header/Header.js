@@ -1,7 +1,9 @@
 import React from 'react'
+// React-router-dom
 import { Link } from 'react-router-dom'
+// SVG
 import GlobalSvg from '../../common/SVG/GlobalSvg'
-
+// Styled
 import './Header.scss'
 
 const Header = () => {
