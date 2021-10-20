@@ -1,16 +1,20 @@
 import React from 'react'
 // Component
 import MovieCard from '../MovieCard/MovieCard'
+// React-slick
+import Slider from 'react-slick'
+import { Settings } from '../../common/setting'
 // Redux
 import { useSelector } from 'react-redux'
 import { getAllMovies, getAllShows } from '../../function/movies/movieSlice'
-// Styled
+// Style
 import './MovieListing.scss'
 
 const MovieListing = () => {
 	const movies = useSelector(getAllMovies)
 	const shows = useSelector(getAllShows)
-	let renderingMovies, renderingShows = ''
+	let renderingMovies,
+		renderingShows = ''
 
 	renderingMovies =
 		movies.Response === 'True' ? (
@@ -36,16 +40,17 @@ const MovieListing = () => {
 
 	return (
 		<div className='movie-wrapper'>
-			<div className="movie-list">
+			<div className='movie-list'>
 				<h2>Movies</h2>
-				<div className="movie-container">
-					{renderingMovies}
+				<div className='movie-container'>
+					<Slider {...Settings}>{renderingMovies}</Slider>
 				</div>
 			</div>
-			<div className="show-list">
+			<div className='show-list'>
 				<h2>Shows</h2>
-				<div className="show-container">
-					{renderingShows}
+
+				<div className='show-container'>
+					<Slider {...Settings}>{renderingShows}</Slider>
 				</div>
 			</div>
 		</div>

@@ -7,13 +7,13 @@ import { fetchAsyncMovies, fetchAsyncShows } from '../../function/movies/movieSl
 // Style
 import './Home.scss'
 
-
 const Home = () => {
 	const dispatch = useDispatch()
-
+	const movieText = 'Avengers'
+	const showText = 'Marvel'
 	React.useEffect(() => {
-		dispatch(fetchAsyncMovies())
-		dispatch(fetchAsyncShows())
+		dispatch(fetchAsyncMovies(movieText))
+		dispatch(fetchAsyncShows(showText))
 	}, [dispatch])
 
 	return (

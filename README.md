@@ -21,6 +21,8 @@
 - `redux`
 - `react-redux`
 - `@reduxjs/toolkit`
+- `react-slick`
+- icon: `boxicons.com`
 
 ---
 

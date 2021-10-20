@@ -3,15 +3,13 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import movieApi from '../../common/API/movieApi'
 import { APIKey } from '../../common/API/MovieApiKey'
 
-export const fetchAsyncMovies = createAsyncThunk('movies/fetchAsyncMovies', async () => {
-	const movieText = 'Batman'
-	const response = await movieApi.get(`?apiKey=${APIKey}&s=${movieText}&type=movie`)
+export const fetchAsyncMovies = createAsyncThunk('movies/fetchAsyncMovies', async (term) => {
+	const response = await movieApi.get(`?apiKey=${APIKey}&s=${term}&type=movie`)
 	return response.data
 })
 
-export const fetchAsyncShows = createAsyncThunk('movies/fetchAsyncShows', async () => {
-	const seriesText = 'House'
-	const response = await movieApi.get(`?apiKey=${APIKey}&s=${seriesText}&type=series`)
+export const fetchAsyncShows = createAsyncThunk('movies/fetchAsyncShows', async (term) => {
+	const response = await movieApi.get(`?apiKey=${APIKey}&s=${term}&type=series`)
 	return response.data
 })
 
@@ -26,7 +24,7 @@ export const fetchAsyncMovieOrShowDetail = createAsyncThunk(
 const initialState = {
 	movies: {},
 	shows: {},
-	selectMovieOrShow: {}
+	selectMovieOrShow: {},
 }
 
 const movieSlice = createSlice({
@@ -35,7 +33,7 @@ const movieSlice = createSlice({
 	reducers: {
 		removeSelectMovieOrShow: (state) => {
 			state.selectMovieOrShow = {}
-		}
+		},
 	},
 	extraReducers: {
 		[fetchAsyncMovies.pending]: () => { },
