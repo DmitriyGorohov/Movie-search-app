@@ -33,9 +33,9 @@ const movieSlice = createSlice({
 	name: 'movies',
 	initialState,
 	reducers: {
-		addMovies: (state, { payload }) => {
-			state.movies = payload
-		},
+		removeSelectMovieOrShow: (state) => {
+			state.selectMovieOrShow = {}
+		}
 	},
 	extraReducers: {
 		[fetchAsyncMovies.pending]: () => { },
@@ -63,7 +63,7 @@ const movieSlice = createSlice({
 	},
 })
 
-export const { addMovies } = movieSlice.actions
+export const { removeSelectMovieOrShow } = movieSlice.actions
 export const getAllMovies = (state) => state.movies.movies
 export const getAllShows = (state) => state.movies.shows
 export const getSelectMovieOrShow = (state) => state.movies.selectMovieOrShow
