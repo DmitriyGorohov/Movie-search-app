@@ -1,22 +1,23 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 // API
-import movieApi from '../../common/API/movieApi'
+import axios from 'axios'
+// import movieApi from '../../common/API/movieApi'
 import { APIKey } from '../../common/API/MovieApiKey'
 
 export const fetchAsyncMovies = createAsyncThunk('movies/fetchAsyncMovies', async (term) => {
-	const response = await movieApi.get(`?apiKey=${APIKey}&s=${term}&type=movie`)
+	const response = await axios.get(`http://www.omdbapi.com/?apiKey=${APIKey}&s=${term}&type=movie`)
 	return response.data
 })
 
 export const fetchAsyncShows = createAsyncThunk('movies/fetchAsyncShows', async (term) => {
-	const response = await movieApi.get(`?apiKey=${APIKey}&s=${term}&type=series`)
+	const response = await axios.get(`http://www.omdbapi.com/?apiKey=${APIKey}&s=${term}&type=series`)
 	return response.data
 })
 
 export const fetchAsyncMovieOrShowDetail = createAsyncThunk(
 	'movies/fetchAsyncMovieOrShowDetail',
 	async (imdbID) => {
-		const response = await movieApi.get(`?apiKey=${APIKey}&i=${imdbID}&Plot=full`)
+		const response = await axios.get(`http://www.omdbapi.com/?apiKey=${APIKey}&i=${imdbID}&Plot=full`)
 		return response.data
 	},
 )
